@@ -1,8 +1,13 @@
 package pl.codilingus.library;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "orders")
+
 public class Order {
+    @Id
     private int id;
     private User user;
     private Book borrowedBook;

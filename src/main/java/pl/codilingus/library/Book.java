@@ -1,6 +1,12 @@
 package pl.codilingus.library;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "books")
+
 public class Book {
+    @Id
     private int id;
     private String title;
     private String author;
