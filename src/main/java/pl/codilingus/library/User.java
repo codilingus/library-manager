@@ -16,8 +16,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public int getUserId(){
+    public int getUserId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
