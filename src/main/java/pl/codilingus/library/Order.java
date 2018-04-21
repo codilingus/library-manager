@@ -8,12 +8,14 @@ public class Order {
     private Book borrowedBook;
     private LocalDate dateOfBorrow;
     private LocalDate dateToReturn;
+    private LocalDate dateOfReturn;
 
     public Order(User user, Book borrowedBook, LocalDate dateOfBorrow, LocalDate dateToReturn) {
         this.user = user;
         this.borrowedBook = borrowedBook;
         this.dateOfBorrow = dateOfBorrow;
         this.dateToReturn = dateToReturn;
+        this.dateOfReturn = null;
     }
 
     public int getId() {
