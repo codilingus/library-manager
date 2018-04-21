@@ -10,9 +10,9 @@ public interface UserRepository {
 
     void deleteUser(int id);
 
-    void editUser(int id , User user);
+    User editUser(int id, User user);
 
-    int findUserById(int id);
+    User findUserById(int id);
 
     List<User> getAllUsers();
 }
