@@ -10,13 +10,18 @@ public class User {
     private int id;
     private String firstName;
     private String lastName;
+    private int age;
+    private int pesel;
 
-    public User(String firstName, String lastName) {
+
+    public User(String firstName, String lastName, int age, int pesel) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.age = age;
+        this.pesel = pesel;
     }
 
-    public int getUserId() {
+    public int getId() {
         return id;
     }
 
@@ -38,5 +43,21 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getPesel() {
+        return pesel;
+    }
+
+    public void setPesel(int pesel) {
+        this.pesel = pesel;
     }
 }
