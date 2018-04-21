@@ -1,7 +1,7 @@
 package pl.codilingus.library;
 
 public class Book {
-    private int bookID;
+    private int id;
     private String title;
     private String author;
 
@@ -10,12 +10,8 @@ public class Book {
         this.author = author;
     }
 
-    public int getBookID() {
-        return bookID;
-    }
-
-    public void setBookID(int bookID) {
-        this.bookID = bookID;
+    public int getId() {
+        return id;
     }
 
     public String getTitle() {
