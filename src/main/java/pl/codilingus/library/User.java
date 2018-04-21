@@ -1,7 +1,10 @@
 package pl.codilingus.library;
 
+import javax.persistence.Entity;
+
+@Entity
 public class User {
-    private int userId;
+    private int id;
     private String firstName;
     private String lastName;
 
@@ -11,7 +14,7 @@ public class User {
     }
 
     public int getUserId(){
-        return userId;
+        return id;
     }
 
     public String getFirstName() {
