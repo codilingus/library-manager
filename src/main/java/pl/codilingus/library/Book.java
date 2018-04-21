@@ -1,5 +1,8 @@
 package pl.codilingus.library;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Book {
     private int id;
     private String title;
