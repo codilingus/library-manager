@@ -10,7 +10,7 @@ public interface UserRepository {
 
     void deleteUser(int id);
 
-    User editUser(int id, User user);
+    User editUser(User user , int id);
 
     User findUserById(int id);
 
