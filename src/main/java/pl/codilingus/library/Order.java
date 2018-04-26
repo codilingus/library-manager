@@ -1,19 +1,26 @@
 package pl.codilingus.library;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "orders")
+
 public class Order {
+    @Id
     private int id;
     private User user;
     private Book borrowedBook;
     private LocalDate dateOfBorrow;
     private LocalDate dateToReturn;
+    private LocalDate dateOfReturn;
 
     public Order(User user, Book borrowedBook, LocalDate dateOfBorrow, LocalDate dateToReturn) {
         this.user = user;
         this.borrowedBook = borrowedBook;
         this.dateOfBorrow = dateOfBorrow;
         this.dateToReturn = dateToReturn;
+        this.dateOfReturn = null;
     }
 
     public int getId() {
