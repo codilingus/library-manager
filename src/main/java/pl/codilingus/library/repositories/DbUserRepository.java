@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.codilingus.library.User;
 
+import javax.jws.soap.SOAPBinding;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.Query;
@@ -29,7 +30,7 @@ public class DbUserRepository implements UserRepository {
     }
 
     @Override
-    public User editUser(int id, User user) {
+    public User editUser(User user , int id) {
         user.setId(id);
         return entityManager.merge(user);
     }
