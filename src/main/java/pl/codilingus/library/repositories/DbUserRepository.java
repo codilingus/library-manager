@@ -21,22 +21,26 @@ public class DbUserRepository implements UserRepository {
     }
 
     @Override
+    @Transactional
     public void addUser(User user) {
         entityManager.persist(user);
     }
 
     @Override
+    @Transactional
     public void deleteUser(int id) {
         entityManager.remove(id);
     }
 
     @Override
+    @Transactional
     public User editUser(User user , int id) {
         user.setId(id);
         return entityManager.merge(user);
     }
 
     @Override
+    @Transactional
     public User findUserById(int id) {
         User user = entityManager.find(User.class , id);
         if (user == null){
