@@ -10,7 +10,7 @@ public interface BookRepository {
 
     void deleteBook(int id);
 
-    Book editBook(int id, Book book);
+    Book editBook(Book book , int id);
 
     Book findBookById(int id);
 

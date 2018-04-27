@@ -9,7 +9,11 @@ import java.time.LocalDate;
 public class Order {
     @Id
     private int id;
+    @ManyToOne
+    @JoinColumn(name = "borrowed_by")
     private User user;
+    @ManyToOne
+    @JoinColumn(name = "book_id")
     private Book borrowedBook;
     private LocalDate dateOfBorrow;
     private LocalDate dateToReturn;
