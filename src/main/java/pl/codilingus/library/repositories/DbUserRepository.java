@@ -47,7 +47,6 @@ public class DbUserRepository implements UserRepository {
 
     @Override
     public List<User> getAllUsers() {
-        Query query = entityManager.createQuery("SELECT * FROM user");
-        return (List<User>)query.getResultList();
+        return entityManager.createNamedQuery("User.findAll").getResultList();
     }
 }
