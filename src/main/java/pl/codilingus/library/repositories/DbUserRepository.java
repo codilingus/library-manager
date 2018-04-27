@@ -8,6 +8,7 @@ import javax.jws.soap.SOAPBinding;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Component
@@ -46,7 +47,10 @@ public class DbUserRepository implements UserRepository {
     }
 
     @Override
+    @Transactional
     public List<User> getAllUsers() {
-        return entityManager.createNamedQuery("User.findAll").getResultList();
+        Query query = entityManager.createQuery("FROM User");
+        List resultList = query.getResultList();
+        return (List<User>) resultList;
     }
 }
