@@ -7,7 +7,8 @@ import javax.persistence.*;
 
 public class User {
     @Id
-    private int id;
+    @GeneratedValue
+    private Integer id;
     private String firstName;
     private String lastName;
     private int age;
@@ -19,6 +20,9 @@ public class User {
         this.lastName = lastName;
         this.age = age;
         this.pesel = pesel;
+    }
+
+    public User() {
     }
 
     public int getId() {

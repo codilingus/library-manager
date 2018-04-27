@@ -8,7 +8,8 @@ import java.time.LocalDate;
 
 public class Order {
     @Id
-    private int id;
+    @GeneratedValue
+    private Integer id;
     @ManyToOne
     @JoinColumn(name = "borrowed_by")
     private User user;
@@ -25,6 +26,9 @@ public class Order {
         this.dateOfBorrow = dateOfBorrow;
         this.dateToReturn = dateToReturn;
         this.dateOfReturn = null;
+    }
+
+    public Order() {
     }
 
     public int getId() {
