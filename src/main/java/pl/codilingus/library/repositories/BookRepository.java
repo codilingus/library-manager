@@ -17,4 +17,6 @@ public interface BookRepository {
     List<Book> getAllBooks();
 
     List<Book> getNotBorrowedBooks();
+
+    List<Book> getBorrowedBooks();
 }
