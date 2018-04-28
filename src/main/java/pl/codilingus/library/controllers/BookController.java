@@ -10,6 +10,7 @@ import pl.codilingus.library.repositories.BookRepository;
 import java.awt.image.RescaleOp;
 import java.util.List;
 
+@RestController
 public class BookController {
 
     @Autowired
@@ -41,5 +42,10 @@ public class BookController {
     @DeleteMapping("/books/{id}")
     public void deleteBook(int id){
         bookRepository.deleteBook(id);
+    }
+
+    @GetMapping("/books/not-borrowed")
+    public List<Book> getNotBorrowedBooks(){
+        return bookRepository.getNotBorrowedBooks();
     }
 }
