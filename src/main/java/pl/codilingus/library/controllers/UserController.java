@@ -34,17 +34,17 @@ public class UserController {
         return userRepository.findUserById(id);
     }
 
-    @PostMapping("/users/fullInformation")
+    @PostMapping("/users")
     public ResponseEntity addUser(@RequestBody User user){
         userRepository.addUser(user);
         return new ResponseEntity(HttpStatus.OK);
     }
-    @PutMapping("/users/fullInformation/{id}")
+    @PutMapping("/users/{id}")
     public ResponseEntity editUser(@RequestBody User user ,@PathVariable int id){
         userRepository.editUser(user , id);
         return new ResponseEntity(HttpStatus.OK);
     }
-    @DeleteMapping("/users/fullInformation/{id}")
+    @DeleteMapping("/users/{id}")
     public void deleteUser(int id){
         userRepository.deleteUser(id);
     }
