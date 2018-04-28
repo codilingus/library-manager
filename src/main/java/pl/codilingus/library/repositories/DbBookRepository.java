@@ -46,12 +46,14 @@ public class DbBookRepository implements BookRepository {
 
     @Override
     public List<Book> getAllBooks() {
-        Query query = entityManager.createQuery("SELECT * FROM book");
+        Query query = entityManager.createQuery("FROM book");
         return (List<Book>)query.getResultList();
     }
 
     @Override
     public List<Book> getNotBorrowedBooks() {
-        return null;
+        Query query = entityManager.createQuery("SELECT DISTINCT b FROM Book b LEFT JOIN Order o ON b.id = o.borrowedBook.id " +
+                "WHERE o.borrowedBook.id IS NULL OR DateOfReturn IS NOT NULL;");
+        return (List<Book>)query.getResultList();
     }
 }
