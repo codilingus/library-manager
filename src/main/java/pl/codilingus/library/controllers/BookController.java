@@ -9,7 +9,7 @@ import pl.codilingus.library.repositories.BookRepository;
 
 import java.awt.image.RescaleOp;
 import java.util.List;
-
+@RestController
 public class BookController {
 
     @Autowired
@@ -39,7 +39,7 @@ public class BookController {
     }
 
     @DeleteMapping("/books/{id}")
-    public void deleteBook(int id){
+    public void deleteBook(@PathVariable int id){
         bookRepository.deleteBook(id);
     }
 }
