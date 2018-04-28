@@ -28,6 +28,10 @@ public class UserController {
     public List<User> getAllUsersWithFullInformation(){
         return userRepository.getAllUsers();
     }
+    @GetMapping("/users/fullInformation/{id}")
+    public User getUserById(@PathVariable int id){
+        return userRepository.findUserById(id);
+    }
 
     @PostMapping("/users/fullInformation")
     public ResponseEntity addUser(@RequestBody User user){
