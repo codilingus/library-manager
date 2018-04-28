@@ -24,22 +24,27 @@ public class UserController {
                 .collect(Collectors.toList());
     }
 
-    @GetMapping("/users/fullInformation")
+    @GetMapping("/users")
     public List<User> getAllUsersWithFullInformation(){
         return userRepository.getAllUsers();
     }
 
-    @PostMapping("/users/fullInformation")
+    @GetMapping("/users/{id}")
+    public User getUserById(@PathVariable int id){
+        return userRepository.findUserById(id);
+    }
+
+    @PostMapping("/users")
     public ResponseEntity addUser(@RequestBody User user){
         userRepository.addUser(user);
         return new ResponseEntity(HttpStatus.OK);
     }
-    @PutMapping("/users/fullInformation/{id}")
+    @PutMapping("/users/{id}")
     public ResponseEntity editUser(@RequestBody User user ,@PathVariable int id){
         userRepository.editUser(user , id);
         return new ResponseEntity(HttpStatus.OK);
     }
-    @DeleteMapping("/users/fullInformation/{id}")
+    @DeleteMapping("/users/{id}")
     public void deleteUser(int id){
         userRepository.deleteUser(id);
     }
