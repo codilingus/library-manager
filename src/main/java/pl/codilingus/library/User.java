@@ -7,18 +7,22 @@ import javax.persistence.*;
 
 public class User {
     @Id
-    private int id;
+    @GeneratedValue()
+    private Integer id;
     private String firstName;
     private String lastName;
     private int age;
-    private int pesel;
+    private long pesel;
 
 
-    public User(String firstName, String lastName, int age, int pesel) {
+    public User(String firstName, String lastName, int age,long pesel) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.pesel = pesel;
+    }
+
+    public User() {
     }
 
     public int getId() {
@@ -53,11 +57,11 @@ public class User {
         this.age = age;
     }
 
-    public int getPesel() {
+    public long getPesel() {
         return pesel;
     }
 
-    public void setPesel(int pesel) {
+    public void setPesel(long pesel) {
         this.pesel = pesel;
     }
 }

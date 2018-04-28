@@ -6,13 +6,17 @@ import javax.persistence.*;
 @Table(name = "books")
 public class Book {
     @Id
-    private int id;
+    @GeneratedValue
+    private Integer id;
     private String title;
     private String author;
 
     public Book(String title, String author) {
         this.title = title;
         this.author = author;
+    }
+
+    public Book() {
     }
 
     public int getId() {
