@@ -28,7 +28,7 @@ public class DbBookRepository implements BookRepository {
     @Override
     @Transactional
     public void deleteBook(int id) {
-        entityManager.remove(id);
+        entityManager.remove(findBookById(id));
     }
 
     @Override
