@@ -45,7 +45,7 @@ public class UserController {
         return new ResponseEntity(HttpStatus.OK);
     }
     @DeleteMapping("/users/{id}")
-    public void deleteUser(int id){
+    public void deleteUser(@PathVariable int id){
         userRepository.deleteUser(id);
     }
 

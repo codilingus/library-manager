@@ -29,7 +29,7 @@ public class DbUserRepository implements UserRepository {
     @Override
     @Transactional
     public void deleteUser(int id) {
-        entityManager.remove(id);
+        entityManager.remove(findUserById(id));
     }
 
     @Override
