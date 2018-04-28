@@ -24,11 +24,12 @@ public class UserController {
                 .collect(Collectors.toList());
     }
 
-    @GetMapping("/users/fullInformation")
+    @GetMapping("/users")
     public List<User> getAllUsersWithFullInformation(){
         return userRepository.getAllUsers();
     }
-    @GetMapping("/users/fullInformation/{id}")
+
+    @GetMapping("/users/{id}")
     public User getUserById(@PathVariable int id){
         return userRepository.findUserById(id);
     }
