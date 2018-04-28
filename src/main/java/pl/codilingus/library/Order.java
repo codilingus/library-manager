@@ -31,6 +31,10 @@ public class Order {
     public Order() {
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }
