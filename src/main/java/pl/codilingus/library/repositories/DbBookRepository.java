@@ -61,7 +61,7 @@ public class DbBookRepository implements BookRepository {
     @Transactional
     public List<Book> getNotBorrowedBooks() {
         Query query = entityManager.createQuery("SELECT DISTINCT b FROM Book b LEFT JOIN Order o ON b.id = o.borrowedBook.id " +
-                "WHERE o.borrowedBook.id IS NULL OR DateOfReturn IS NOT NULL;");
+                "WHERE o.borrowedBook.id IS NULL OR o.dateOfReturn IS NOT NULL" );
         return (List<Book>)query.getResultList();
     }
 }
