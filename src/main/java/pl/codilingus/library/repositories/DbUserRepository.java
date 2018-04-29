@@ -13,6 +13,7 @@ import java.util.List;
 
 @Component
 public class DbUserRepository implements UserRepository {
+
     private EntityManager entityManager;
 
     @Autowired
