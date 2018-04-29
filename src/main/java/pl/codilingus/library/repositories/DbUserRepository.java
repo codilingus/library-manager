@@ -13,6 +13,7 @@ import java.util.List;
 
 @Component
 public class DbUserRepository implements UserRepository {
+
     private EntityManager entityManager;
 
     @Autowired
@@ -29,7 +30,7 @@ public class DbUserRepository implements UserRepository {
     @Override
     @Transactional
     public void deleteUser(int id) {
-        entityManager.remove(id);
+        entityManager.remove(findUserById(id));
     }
 
     @Override
