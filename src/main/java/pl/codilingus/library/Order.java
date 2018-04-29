@@ -1,7 +1,13 @@
 package pl.codilingus.library;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 @Entity
 @Table(name = "orders")
@@ -73,7 +79,15 @@ public class Order {
 
     public boolean isAfterDeadline() {
         LocalDate now = LocalDate.now();
-        return now.isAfter(this.dateOfBorrow);
+        return now.isAfter(this.dateToReturn);
+    }
+
+    public int daysAfterDeadline() {
+        LocalDateTime localDateToReturn = dateToReturn.atStartOfDay();
+        ZonedDateTime zonedDateToReturn = localDateToReturn.atZone(ZoneId.of("Europe/Paris"));
+        long daysAfterDeadline = (zonedDateToReturn.toInstant().toEpochMilli() - System.currentTimeMillis()) / (24 * 60 * 60 * 1000);
+
+        return (int) daysAfterDeadline;
     }
 }
 
