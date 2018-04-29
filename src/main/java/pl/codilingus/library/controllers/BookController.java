@@ -21,7 +21,7 @@ public class BookController {
         return bookRepository.getAllBooks();
     }
 
-    @GetMapping("/book/{id}")
+    @GetMapping("/books/{id}")
     public Book getBookById(@PathVariable int id ){
         return bookRepository.findBookById(id);
 
@@ -40,7 +40,7 @@ public class BookController {
     }
 
     @DeleteMapping("/books/{id}")
-    public void deleteBook(int id){
+    public void deleteBook(@PathVariable int id){
         bookRepository.deleteBook(id);
     }
 
