@@ -48,4 +48,9 @@ public class BookController {
     public List<Book> getNotBorrowedBooks(){
         return bookRepository.getNotBorrowedBooks();
     }
+
+    @GetMapping("books/borrowed")
+    public List<Book> getBorrowedBooks(){
+        return bookRepository.getBorrowedBooks();
+    }
 }
