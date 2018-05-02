@@ -1,5 +1,7 @@
 package pl.codilingus.library;
 
+import java.util.Comparator;
+
 public class OverdueOrder {
     public int getUserId() {
         return userId;
@@ -55,4 +57,5 @@ public class OverdueOrder {
         this.orderId = orderId;
         this.overdueDays = overdueDays;
     }
+
 }

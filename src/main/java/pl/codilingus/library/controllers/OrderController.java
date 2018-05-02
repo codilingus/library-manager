@@ -5,9 +5,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.codilingus.library.Order;
+import pl.codilingus.library.OrderComparator;
 import pl.codilingus.library.OverdueOrder;
 import pl.codilingus.library.repositories.OrderRepository;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,6 +36,9 @@ public class OrderController {
         return orderRepository.getAllOrders();
     }
 
+    @Autowired
+    private Comparator<OverdueOrder> orderComparator = new OrderComparator();
+
     @GetMapping("/orders/overdue")
     public List<OverdueOrder> getOverdueOrders(){
         return orderRepository.getOverdueOrders().stream()
@@ -43,6 +48,7 @@ public class OrderController {
                         order.getUser().getLastName(),
                         order.getId(),
                         order.daysAfterDeadline()))
+                .sorted(orderComparator)
                 .collect(Collectors.toList());
     }
 }
