@@ -8,8 +8,6 @@ import pl.codilingus.library.Order;
 import pl.codilingus.library.OrderComparator;
 import pl.codilingus.library.OverdueOrder;
 import pl.codilingus.library.repositories.OrderRepository;
-
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,16 +16,18 @@ public class OrderController {
 
     @Autowired
     private OrderRepository orderRepository;
+    @Autowired
+    private OrderComparator orderComparator;
 
     @PostMapping("/order")
-    public ResponseEntity addOrder(@RequestBody Order order){
+    public ResponseEntity addOrder(@RequestBody Order order) {
         orderRepository.addOrder(order);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @PutMapping("/order/{id}")
-    public ResponseEntity updateOrder(@RequestBody Order order , @PathVariable int id){
-        orderRepository.updateOrder(order , id);
+    public ResponseEntity updateOrder(@RequestBody Order order, @PathVariable int id) {
+        orderRepository.updateOrder(order, id);
         return new ResponseEntity(HttpStatus.OK);
     }
 
@@ -36,11 +36,8 @@ public class OrderController {
         return orderRepository.getAllOrders();
     }
 
-    @Autowired
-    private Comparator<OverdueOrder> orderComparator = new OrderComparator();
-
     @GetMapping("/orders/overdue")
-    public List<OverdueOrder> getOverdueOrders(){
+    public List<OverdueOrder> getOverdueOrders() {
         return orderRepository.getOverdueOrders().stream()
                 .map(order -> new OverdueOrder(
                         order.getUser().getId(),

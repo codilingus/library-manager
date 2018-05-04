@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -83,11 +84,11 @@ public class Order {
     }
 
     public int daysAfterDeadline() {
-        LocalDateTime localDateToReturn = dateToReturn.atStartOfDay();
-        ZonedDateTime zonedDateToReturn = localDateToReturn.atZone(ZoneId.of("Europe/Paris"));
-        long daysAfterDeadline = (zonedDateToReturn.toInstant().toEpochMilli() - System.currentTimeMillis()) / (24 * 60 * 60 * 1000);
-
-        return (int) daysAfterDeadline;
+        if (dateOfReturn != null) {
+            return (int) ChronoUnit.DAYS.between(dateToReturn, dateOfReturn);
+        } else {
+            return (int) ChronoUnit.DAYS.between(dateOfBorrow, LocalDate.now());
+        }
     }
 }
 

@@ -1,8 +1,20 @@
 package pl.codilingus.library;
 
-import java.util.Comparator;
-
 public class OverdueOrder {
+    private int userId;
+    private String firstName;
+    private String lastName;
+    private int orderId;
+    private int overdueDays;
+
+    public OverdueOrder(int userId, String firstName, String lastName, int orderId, int overdueDays) {
+        this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.orderId = orderId;
+        this.overdueDays = overdueDays;
+    }
+
     public int getUserId() {
         return userId;
     }
@@ -40,21 +52,6 @@ public class OverdueOrder {
     }
 
     public void setOverdueDays(int overdueDays) {
-        this.overdueDays = overdueDays;
-    }
-
-    private int userId;
-    private String firstName;
-    private String lastName;
-
-    private int orderId;
-    private int overdueDays;
-
-    public OverdueOrder(int userId, String firstName, String lastName, int orderId, int overdueDays) {
-        this.userId = userId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.orderId = orderId;
         this.overdueDays = overdueDays;
     }
 
