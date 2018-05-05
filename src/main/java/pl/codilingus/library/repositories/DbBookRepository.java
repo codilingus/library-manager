@@ -43,7 +43,7 @@ public class DbBookRepository implements BookRepository {
     public Book findBookById(int id) {
         Book book = entityManager.find(Book.class, id);
         if (book == null) {
-            throw new EntityNotFoundException("Can't find User for ID "
+            throw new EntityNotFoundException("Can't find Book for ID "
                     + id);
         }
         return book;
@@ -66,6 +66,7 @@ public class DbBookRepository implements BookRepository {
     }
 
     @Override
+    @Transactional
     public List<Book> getBorrowedBooks(){
         Query query = entityManager.createQuery("SELECT DISTINCT b FROM Book b LEFT JOIN Order o ON b.id = o.borrowedBook.id " +
                 "WHERE o.borrowedBook.id IS NOT NULL AND o.dateOfReturn IS NULL");
