@@ -78,6 +78,10 @@ public class Order {
         this.dateToReturn = dateToReturn;
     }
 
+    public LocalDate getDateOfReturn() {
+        return dateOfReturn;
+    }
+
     public boolean isAfterDeadline() {
         LocalDate now = LocalDate.now();
         return now.isAfter(this.dateToReturn);
