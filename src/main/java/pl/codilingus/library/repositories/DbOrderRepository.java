@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import pl.codilingus.library.Order;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityNotFoundException;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.util.List;
@@ -45,5 +46,16 @@ public class DbOrderRepository implements OrderRepository{
         Query query = entityManager.createQuery("FROM Order WHERE dateOfReturn IS NULL AND dateToReturn < CURDATE()");
         List resultList = query.getResultList();
         return (List<Order>) resultList;
+    }
+
+    @Override
+    @Transactional
+    public Order findOrderById(int id) {
+       Order order = entityManager.find(Order.class, id);
+        if (order == null) {
+            throw new EntityNotFoundException("Can't find Order for ID "
+                    + id);
+        }
+        return order;
     }
 }

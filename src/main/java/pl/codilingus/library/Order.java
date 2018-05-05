@@ -3,12 +3,7 @@ package pl.codilingus.library;
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 @Entity
 @Table(name = "orders")
@@ -35,15 +30,19 @@ public class Order {
         this.dateOfReturn = null;
     }
 
-    public Order() {
+    public Order(LocalDate dateOfReturn) {
+        this.dateOfReturn = dateOfReturn;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Order() {
     }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public User getUser() {
@@ -78,16 +77,29 @@ public class Order {
         this.dateToReturn = dateToReturn;
     }
 
-    public boolean isAfterDeadline() {
-        LocalDate now = LocalDate.now();
-        return now.isAfter(this.dateToReturn);
+    public LocalDate getDateOfReturn() {
+        return dateOfReturn;
     }
 
-    public int daysAfterDeadline() {
+    public void setDateOfReturn(LocalDate dateOfReturn) {
+        this.dateOfReturn = dateOfReturn;
+    }
+
+    public boolean isAfterDeadline() {
+        return getDaysAfterDeadline() > 0;
+    }
+
+    public int getDaysAfterDeadline() {
+            int between;
         if (dateOfReturn != null) {
-            return (int) ChronoUnit.DAYS.between(dateToReturn, dateOfReturn);
+            between = (int) ChronoUnit.DAYS.between(dateToReturn, dateOfReturn);
         } else {
-            return (int) ChronoUnit.DAYS.between(dateOfBorrow, LocalDate.now());
+            between = (int) ChronoUnit.DAYS.between(dateOfBorrow, LocalDate.now());
+        }
+        if(between < 0 ){
+            return 0;
+        }else {
+            return between;
         }
     }
 }

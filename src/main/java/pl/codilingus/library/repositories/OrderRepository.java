@@ -14,4 +14,6 @@ public interface OrderRepository {
 
     List<Order> getOverdueOrders();
 
+    Order findOrderById(int id);
+
 }
