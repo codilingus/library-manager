@@ -1,7 +1,6 @@
 package pl.codilingus.library;
 
 import javax.persistence.*;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
@@ -28,10 +27,6 @@ public class Order {
         this.dateOfBorrow = dateOfBorrow;
         this.dateToReturn = dateToReturn;
         this.dateOfReturn = null;
-    }
-
-    public Order(LocalDate dateOfReturn) {
-        this.dateOfReturn = dateOfReturn;
     }
 
     public Order() {
@@ -90,15 +85,15 @@ public class Order {
     }
 
     public int getDaysAfterDeadline() {
-            int between;
+        int between;
         if (dateOfReturn != null) {
             between = (int) ChronoUnit.DAYS.between(dateToReturn, dateOfReturn);
         } else {
             between = (int) ChronoUnit.DAYS.between(dateOfBorrow, LocalDate.now());
         }
-        if(between < 0 ){
+        if (between < 0) {
             return 0;
-        }else {
+        } else {
             return between;
         }
     }

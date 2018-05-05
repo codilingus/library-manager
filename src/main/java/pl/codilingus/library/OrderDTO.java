@@ -18,10 +18,6 @@ public class OrderDTO {
         this.dateOfReturn = dateOfReturn;
     }
 
-    public OrderDTO(LocalDate dateOfReturn) {
-        this.dateOfReturn = dateOfReturn;
-    }
-
     public OrderDTO() {
     }
 
